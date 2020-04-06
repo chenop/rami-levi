@@ -19,7 +19,10 @@ async function fetchAvailableHours() {
 	return availableShifts.map(shift => `${shift.Date} ${shift.FromHour}-${shift.ToHour}`);
 }
 
-const run = async () => {
+module.exports.run = async function (event, context, callback) {
+	const seconds = new Date() / 1000;
+
+	push.send(`ניסיון ${seconds}`);
 	let hours = await fetchAvailableHours();
 	if (!hours || hours.length === 0)
 		return;
@@ -30,5 +33,3 @@ const run = async () => {
 	// We got available hours!
 	push.send("רמי לוי פנוי!", formattedHours);
 };
-
-run();
