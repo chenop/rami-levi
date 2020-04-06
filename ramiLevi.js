@@ -22,7 +22,9 @@ async function fetchAvailableHours() {
 module.exports.run = async function (event, context, callback) {
 	const seconds = new Date() / 1000;
 
-	push.send(`ניסיון ${seconds}`);
+	let testMsg = `ניסיון ${seconds}`;
+	console.log(testMsg);
+	push.send(testMsg);
 	let hours = await fetchAvailableHours();
 	if (!hours || hours.length === 0)
 		return;
