@@ -8,7 +8,9 @@
     "dotenv": "^8.2.0",
     "node-pushover": "^0.2.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "serverless-dotenv-plugin": "^2.3.2"
+  },
   "scripts": {},
   "repository": {
     "type": "git",

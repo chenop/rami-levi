@@ -25,6 +25,7 @@ module.exports.run = async function (event, context, callback) {
 	let testMsg = `ניסיון ${seconds}`;
 	console.log(testMsg);
 	push.send(testMsg);
+
 	let hours = await fetchAvailableHours();
 	if (!hours || hours.length === 0)
 		return;

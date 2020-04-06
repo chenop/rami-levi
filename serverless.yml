@@ -11,6 +11,8 @@
 #
 # Happy Coding!
 service: rami-levi-available-slots
+plugins:
+  - serverless-dotenv-plugin
 # app and org for use with dashboard.serverless.com
 app: ramilevi
 org: chenop
