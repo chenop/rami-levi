@@ -1,0 +1,23 @@
+{
+  "name": "rami-levi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ramiLevi.js",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "dotenv": "^8.2.0",
+    "node-pushover": "^0.2.2"
+  },
+  "devDependencies": {},
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chenop/rami-levi.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chenop/rami-levi/issues"
+  },
+  "homepage": "https://github.com/chenop/rami-levi#readme"
+}
