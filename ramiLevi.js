@@ -2,6 +2,7 @@ const axios = require('axios');
 const Pushover = require('node-pushover');
 require('dotenv').config(); // Read .env file
 
+// Init Pushover
 const push = new Pushover({
 	token: process.env.APP_TOKEN,
 	user: process.env.USER_API_KEY
