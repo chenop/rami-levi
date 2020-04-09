@@ -16,18 +16,26 @@ async function fetchAvailableHours() {
 	);
 
 	let shifts = result.data.data;
+	if (!shifts)
+		throw new Error("shifts object does not exist");
+
 	let availableShifts = shifts.filter(day => day.Active === '1');
 	return availableShifts.map(shift => `${shift.Date} ${shift.FromHour}-${shift.ToHour}`);
 }
 
 module.exports.run = async function (event, context, callback) {
-	let hours = await fetchAvailableHours();
-	if (!hours || hours.length === 0)
-		return;
+	try {
+		let hours = await fetchAvailableHours();
+		if (!hours || hours.length === 0)
+			return;
 
-	let formattedHours = hours.join('\n');
-	console.log(formattedHours);
+		let formattedHours = hours.join('\n');
+		console.log(formattedHours);
 
-	// We got available hours!
-	push.send("רמי לוי פנוי!", formattedHours);
+		// We got available hours!
+		push.send("רמי לוי פנוי!", formattedHours);
+	}
+	catch (err) {
+		console.error(err);
+	}
 };
