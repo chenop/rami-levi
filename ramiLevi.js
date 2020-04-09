@@ -16,8 +16,8 @@ async function fetchAvailableHours() {
 	);
 
 	let shifts = result.data.data;
-	if (!shifts)
-		throw new Error("shifts object does not exist");
+	if (!shifts || shifts.length === 0)
+		return shifts;
 
 	let availableShifts = shifts.filter(day => day.Active === '1');
 	return availableShifts.map(shift => `${shift.Date} ${shift.FromHour}-${shift.ToHour}`);
@@ -26,8 +26,15 @@ async function fetchAvailableHours() {
 module.exports.run = async function (event, context, callback) {
 	try {
 		let hours = await fetchAvailableHours();
-		if (!hours || hours.length === 0)
+		if (!hours) {
+			console.log("hours are undefined");
 			return;
+		}
+
+		if (hours.length === 0) {
+			console.log("no hours available");
+			return;
+		}
 
 		let formattedHours = hours.join('\n');
 		console.log(formattedHours);
